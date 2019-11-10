@@ -1,6 +1,8 @@
 # En esta clase hay una recopilación de funciones
 from math import e, cos, sin, tan, tanh, log
 
+import numpy
+
 
 def exponencial(x, base=e):
     return base ** x
@@ -29,17 +31,12 @@ def tangente(x):
 def tangente_hipervolica(x):
     return tanh(x)
 
-
-def logaritmo(x, base=e):
-    return log(x, base)
-
-
 def funcion_enunciado(x):
-    return coseno(x) / x
-
-
-def funcion_curiosa_1(x):
-    return logaritmo(potencia(x, 9)) * seno(x)
+    try:
+        with numpy.errstate(divide='ignore'):
+            return coseno(x) / x
+    except ZeroDivisionError:
+         pass
 
 
 def ajustar_valor(x, intervalo):
