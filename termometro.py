@@ -17,3 +17,11 @@ def temperatura_lundy(temperatura, beta):
 
 def temperatura_hajek(iteracion, constante):
     return constante / log(iteracion + 1)
+
+
+def temperatura_adicional(estado):
+    return max(0.01,  1 - estado)
+
+
+def beta_lundy(temperatura_inicial, temperatura_final, n_entornos):
+    return (temperatura_inicial - temperatura_final) / (n_entornos * temperatura_inicial * temperatura_final)
