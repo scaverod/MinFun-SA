@@ -25,3 +25,14 @@ def temperatura_adicional(estado):
 
 def beta_lundy(temperatura_inicial, temperatura_final, n_entornos):
     return (temperatura_inicial - temperatura_final) / (n_entornos * temperatura_inicial * temperatura_final)
+
+
+def get_temperatura(estado = -1, iteracion = -1, descanso = 0, temperatura_actual = -1, alpha = 0.95, temperatura_inicial = 1, constante = 0, temperatura_final = -1, n_entornos = -1, beta = -1):
+    if estado != -1:
+        return temperatura_adicional(estado)
+    elif constante != 0:
+        return temperatura_hajek(iteracion, constante)
+    elif beta != -1:
+        return temperatura_lundy(temperatura_actual, beta)
+    else:
+        return temperatura_kirkpatrick(iteracion, descanso, temperatura_actual, alpha, temperatura_inicial)
